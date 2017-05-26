@@ -9,11 +9,8 @@ $(function(){
   // fire an AJAX request to our API
   // we need a form that takes in a student name and some content
   CatchPhrase.all(function(data){
-    const lis = data.map(function(phrase){
-      const catchPhrase = new CatchPhraseView(phrase)
-      return catchPhrase.render()
-    })
-    $('ul#phrases').html( lis.join(''))
+    const listView = new CatchPhraseListView(data)
+    $('#phrases').html( listView.render() )
   })
   // when the form is submitted
   $('#new-phrase').on('submit', function(event){
